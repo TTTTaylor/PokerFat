@@ -1,0 +1,124 @@
+/* pages/first/first.wxss */
+@import "../../skin/dark.wxss";
+Page{
+	background-color: #fff;
+}
+.cu-form-group .title {
+  min-width: calc(3em + 0rpx);
+}
+.tx{
+	display: flex;
+	flex-direction: column;
+}
+
+.fm{
+	display: flex;
+	justify-content: center;
+
+}
+
+.fm_img{
+	width: 650rpx;
+	height: 550rpx;
+	border: 0%;
+}
+
+.margin_{
+	margin-top: 80rpx;
+}
+
+.juzhong{
+	 padding: 10px 0;
+	display: flex;
+	align-items: center;
+}
+
+.touxiang{
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 100%;
+}
+/* 名字输入框边框 */
+.con {
+    border: 3px  #4169e1;
+    border-style: none none dotted none ;
+    border-radius: 0%;
+}
+
+  /*主容器*/
+  .stepper {
+	width:120px;
+	height:40px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+  }
+  /* 白色容器 */
+  .cu-form-group-model {
+  background-color: #fff;
+  padding: 1rpx 10rpx 1rpx 30rpx;
+  display: flex;
+  align-items: center;
+  min-height: 100rpx;
+  justify-content: space-between;
+}
+  /*加号和减号*/
+  .stepper text {
+	float: left;
+	width: 35px;
+	line-height: 40px;
+	text-align: center;
+  }
+  /*数值*/
+  .stepper input {
+	width: 48px;
+	height: 40px;
+	float: left;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 12px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+  }
+  /*普通样式*/
+  .stepper .normal {
+	color:black;
+  }
+  
+  /*禁用样式*/
+  .stepper .disable {
+	color: #ccc;
+  }
+
+  .liangduan{
+	  width: 260px;
+	  display: flex;
+	  justify-content: space-between;
+  }
+
+  
+/* 水平分割线 */
+  .divLine{
+	background: #E0E3DA;
+	width: 100%;
+	height: 5rpx;
+   }
+
+   /* 设置按钮样式 */
+   .btnClass{
+	background-color: #4169E1;
+	margin-top: 10px;
+   }
+   .btnText{
+	   color: white;
+   }
+   .textClass{
+	display: flex;
+	justify-content: center;
+   }
+   .lineText{
+	   color: gray;
+	   font-size: 25rpx;
+   }
+  
+  

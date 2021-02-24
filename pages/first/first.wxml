@@ -1,0 +1,226 @@
+<view class="fm ">
+    <!-- <image class="fm_img" src="../../images/htg.jpg" /> -->
+	<image class="fm_img" src='{{imgList[0]}}' bindtap='preview'  data-src="{{imgList[0]}}"></image>
+</view>
+
+<!-- <view class="margin_"></view> -->
+<!-- 导航栏 -->
+<view class="cu-bar bg-white margin-top solid-bottom">
+    <view class="action">
+        <text class="icon-title text-orange"></text> 选择
+    </view>
+</view>
+<scroll-view scroll-x class="bg-white nav text-center ">
+    <view class="cu-item {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabNav}}" wx:key bindtap='tabSelect' data-id="{{index}}">
+        {{tabNav[index]}}
+    </view>
+</scroll-view>
+<!-- 操作栏 -->
+<block wx:if="{{TabCur==0}}">
+    <view class="tx">
+        <view class="juzhong">
+            <!-- <image class="touxiang" src="../../images/2.jpg"></image> -->
+			<image class="touxiang" src='{{imgList[1]}}' bindtap='preview'  data-src="{{imgList[1]}}"></image>
+            <text>大肥：</text>
+            <form>
+                <view class="liangduan">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus'>-</text>
+                        <input bindinput='bindManual' value='{{num}}'></input>
+                        <text bindtap='bindPlus'>+</text>
+                    </view>
+                    <button bindtap="btn" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+            <image class="touxiang" src='{{imgList[2]}}' bindtap='preview'  data-src="{{imgList[2]}}"></image>
+            <text>细肥：</text>
+            <form>
+                <view class="liangduan">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus1'>-</text>
+                        <input bindinput='bindManual1' value='{{num1}}'></input>
+                        <text bindtap='bindPlus1'>+</text>
+                    </view>
+                    <button bindtap="btn1" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+           <image class="touxiang" src='{{imgList[3]}}' bindtap='preview'  data-src="{{imgList[3]}}"></image>
+            <text>亚肥：</text>
+            <form>
+                <view class="liangduan">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus2'>-</text>
+                        <input bindinput='bindManual2' value='{{num2}}'></input>
+                        <text bindtap='bindPlus2'>+</text>
+                    </view>
+                    <button bindtap="btn2" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+    </view>
+</block>
+<block wx:if="{{TabCur==1}}">
+    <view class="tx">
+        <view class="juzhong">
+            <view class="cu-form-group-model con">                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus'>-</text>
+                        <input bindinput='bindManual' value='{{num}}'></input>
+                        <text bindtap='bindPlus'>+</text>
+                    </view>
+                    <button bindtap="btn" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+            <view class="cu-form-group-model con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus1'>-</text>
+                        <input bindinput='bindManual1' value='{{num1}}'></input>
+                        <text bindtap='bindPlus1'>+</text>
+                    </view>
+                    <button bindtap="btn1" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+            <view class="cu-form-group-model  con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus2'>-</text>
+                        <input bindinput='bindManual2' value='{{num2}}'></input>
+                        <text bindtap='bindPlus2'>+</text>
+                    </view>
+                    <button bindtap="btn2" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+    </view>
+</block>
+<block wx:if="{{TabCur==2}}">
+    <view class="tx">
+        <view class="juzhong">
+            <view class="cu-form-group-model con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus'>-</text>
+                        <input bindinput='bindManual' value='{{num}}'></input>
+                        <text bindtap='bindPlus'>+</text>
+                    </view>
+                    <button bindtap="btn" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+            <view class="cu-form-group-model con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus1'>-</text>
+                        <input bindinput='bindManual1' value='{{num1}}'></input>
+                        <text bindtap='bindPlus1'>+</text>
+                    </view>
+                    <button bindtap="btn1" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+        <view class="juzhong">
+            <view class="cu-form-group-model con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus2'>-</text>
+                        <input bindinput='bindManual2' value='{{num2}}'></input>
+                        <text bindtap='bindPlus2'>+</text>
+                    </view>
+                    <button bindtap="btn2" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+		<view class="juzhong">
+            <view class="cu-form-group-model con">
+                
+                <input placeholder="姓名-如:肥仔"></input>
+            </view>
+            <form>
+                <view class="liangduan cu-form-group-model">
+                    <view class='stepper'>
+                        <text type='number' bindtap='bindMinus3'>-</text>
+                        <input bindinput='bindManual3' value='{{num3}}'></input>
+                        <text bindtap='bindPlus3'>+</text>
+                    </view>
+                    <button bindtap="btn3" form-type="reset" type="warn" size="mini">
+                        <text>重置</text>
+                    </button>
+                </view>
+            </form>
+        </view>
+    </view>
+</block>
+<button class="btnClass" bindtap="savedata">
+    <text class="btnText">保存数据</text>
+</button>
+
+<view>
+    <!-- <view class="divLine"></view> -->
+    <view class="textClass">
+        <text class="lineText" selectable="false" space="false" decode="false">
+          *获取历史记录请前往"浏览"页面
+      </text>
+    </view>
+</view>
+
+<!-- <view class='stepper'>
+    <text >{{data1}}</text>
+    <text >{{data2}}</text>
+    <text >{{data3}}</text>   
+</view>
+<view class="my-box {{skinStyle}}-box">
+    <text>深夜模式</text>
+    <switch bindchange="switchChange" color="#F39C89" class="switch" />
+</view>  -->
