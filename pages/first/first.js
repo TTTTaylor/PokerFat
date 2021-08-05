@@ -4,6 +4,15 @@ const app = getApp()
 
 Page({
 	data: {
+		items: [
+			{ value: '0.5', name: '+0.5',checked:"true"},
+			//{ value: '1', name: '+1'},
+			{ value: '2', name: '+2'},
+			{ value: '3', name: '+3' },
+			{ value: '4', name: '+4' },
+			{ value: '6', name: '+6' }
+		],
+		num0: 0.5,
 		num: 0,
 		num1: 0,
 		num2: 0,
@@ -12,40 +21,54 @@ Page({
 		data2: '',
 		data3: '',
 		data4: '',
+		pws:5354,
+		inpws:'',
+		ifpws:2,
 		imgList: [
 			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcdHooszXkRypqIGEOGl8assDHgkBV4kNRwam562ED4A10VPG0P8KA6y3QsDq0oOQTPJF.Gp4rNXCIa3bb.VJE9o!/b&bo=igKaAQAAAAABFyM!&rf=viewer_4",
-			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcc.MJ*Vu3.vJ*2Gi1mcYi3LgB326647rkVJv7NteSQqj1apHaJKmxFPjjUpcnfSwT*n3VwkjVHcvtU9MX7k6jFQ!/b&bo=RAVZAwAAAAADZ1k!&rf=viewer_4",
+			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcSQGhlBkrJAKG25nHzwllvQVlL6panx1SpyL6IVK4hGIcHY95ul*5ZMAq*QjUG31Nxgxk6xFSAD6akYp*WRWIE4!/b&bo=JAk4BAAAAAABFyE!&rf=viewer_4",
 			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcXcypRqaDRvBEXOUI9oQ3ExOA19uw5tzYFMaJUMUNaJKSOHrUtKMUVBB7pRMmeUjlMkz6Xxba4ZlwKAFBNb8amw!/b&bo=OAQrBgAAAAABFyE!&rf=viewer_4",
-			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcXcypRqaDRvBEXOUI9oQ3Ex3Xxxn*dy.klBugxLI*ozgfHOV2vEBp2bRqeWIQtVFa9obwV2m.NsYuLKSu2wVrXc!/b&bo=nQKOAQAAAAABFyA!&rf=viewer_4"
-	
+			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcXcypRqaDRvBEXOUI9oQ3Ex3Xxxn*dy.klBugxLI*ozgfHOV2vEBp2bRqeWIQtVFa9obwV2m.NsYuLKSu2wVrXc!/b&bo=nQKOAQAAAAABFyA!&rf=viewer_4",
+			"http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mcYueKcPMc.8tOhC60c6FPVHBRP75SCB2Rxd4rbT.aZTc3ymz4rwZ.L3JMfH1HTzdNcKjTWF3doQi.Pu4xD2*jzk!/b&bo=GAKjAgAAAAADN6k!&rf=viewer_4"
 		], 
 
 		  //图片路径
-		skinStyle: "" , //深夜主题变量
 		CustomBar: app.globalData.CustomBar,
 		TabCur: 0,
-		tabNav: ['三肥专用', '三人', '四人']
+		tabNav: ['合肥专用', '三人', '四人']
 	},
-	//预览图片，放大预览
-	// preview(event) {
-	// 	console.log(event.currentTarget.dataset.src)
-	// 	let currentUrl = event.currentTarget.dataset.src
-	// 	wx.previewImage({
-	// 		current: currentUrl, // 当前显示图片的http链接
-	// 		urls: this.data.imgList // 需要预览的图片http链接列表
-	// 	})
-	// },
-	// clickImg: function (e) {
-	// 	var that = this
-	// 	var imgUrl = this.data.imgUrl;
-	// 	//所有图片
-	// 	wx.previewImage({
-	// 		current: imgUrl,//当前图片地址
-	// 		urls: imgUrl
-			
-			
-	// 	})
-	// },
+	bgimg: function () {
+		//相册中获取
+		wx.chooseImage({
+			count: 1,
+			success: function (res) {
+				console.log(res);
+				wx.previewImage({
+					urls: [res.tempFilePaths[0]],
+				})
+			},
+		})
+	},
+
+	//倍数选择
+	radioChange(e) {
+		console.log('radio发生change事件，携带value值为：', e.detail.value)
+		var anumber = e.detail.value
+		this.setData({
+			anumber: e.detail.value,     //通过setData方法将值存进去
+		})
+		// const items = this.data.items
+		// for (let i = 0, len = items.length; i < len; ++i) {
+		// 	items[i].checked = items[i].value === e.detail.value
+		// }
+
+		// this.setData({
+		// 	items
+		// })
+		console.log(anumber)
+	},
+
+	//预览图片
 	preview(event) {
 		console.log(event)
 		console.log(event.currentTarget.dataset.src)
@@ -56,7 +79,7 @@ Page({
 		})
 	},
 	
-
+	//导航选择
 	tabSelect(e) {
 		console.log(e);
 		this.setData({
@@ -64,83 +87,99 @@ Page({
 			scrollLeft: (e.currentTarget.dataset.id - 1) * 60
 		})
 	},
-	//深夜主题
-	onLoad: function (options) {
-	},
-	switchChange: function (e) {
-		// console.log(e)
-		// console.log(e.detail.value)
-		var that = this
-		//设置全局变量
-		if (e.detail.value == true) {
-			app.globalData.skin = "dark"
-		} else {
-			app.globalData.skin = ""
-		}
-		that.setData({
-			skinStyle: app.globalData.skin
-		})
-		//保存到本地
-		wx.setStorage({
-			key: "skin",
-			data: app.globalData.skin
-		})
-		console.log(app.globalData.skin)
-	},
+
 	//事件处理函数
 	/*点击减号*/
-	bindMinus: function () {
-		var num = this.data.num;
-		num = num - 0.5;
+	bindMinus: function (e) {
+		var num = this.data.num;		
+		
+		if (this.data.anumber>0){
+			var cate = this.data.anumber;
+		}else{
+			var cate = this.data.num0;
+		}		
+		num = num - cate;
 		this.setData({
 			num: num,
 		})
+		console.log(this.data.anumber)
+		console.log(cate)
+		console.log(num)
+		
 	},
+	
 	bindMinus1: function () {
 		var num1 = this.data.num1;
-		num1 = num1 - 0.5;
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num1 = num1 - cate;
 		this.setData({
 			num1: num1,
 		})
 	},
 	bindMinus2: function () {
 		var num2 = this.data.num2;
-		num2 = num2 - 0.5;
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num2 = num2 - cate;
 		this.setData({
 			num2: num2,
 		})
 	},
 	bindMinus3: function () {
 		var num3 = this.data.num3;
-		num3 = num3 - 0.5;
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num3 = num3 - cate;
 		this.setData({
 			num3: num3,
 		})
 	},
 
 	/*点击加号*/
-	bindPlus: function () {
+	bindPlus: function (e) {
 		var num = this.data.num;
-		num = num + 0.5;
-
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num = num + parseFloat(cate);
 		this.setData({
 			num: num,
 
 		})
+		console.log(num)
 	},
 	bindPlus1: function () {
 		var num1 = this.data.num1;
-		num1 = num1 + 0.5;
-
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num1 = num1 + parseFloat(cate);
 		this.setData({
 			num1: num1,
-
 		})
 	},
 	bindPlus2: function () {
 		var num2 = this.data.num2;
-		num2 = num2 + 0.5;
-
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num2 = num2 + parseFloat(cate);
 		this.setData({
 			num2: num2,
 
@@ -148,8 +187,12 @@ Page({
 	},
 	bindPlus3: function () {
 		var num3 = this.data.num3;
-		num3 = num3 + 0.5;
-
+		if (this.data.anumber > 0) {
+			var cate = this.data.anumber;
+		} else {
+			var cate = this.data.num0;
+		}	
+		num3 = num3 + parseFloat(cate);
 		this.setData({
 			num3: num3,
 
@@ -157,18 +200,17 @@ Page({
 	},
 	/*输入框事件*/
 	bindManual: function (e) {
-		var num = e.detail.value;
-		//var minusStatus = num > 0 ? 'normal' : 'disable';		
+		var num = e.detail.value;	
 		this.setData({
-			num: num,
-			//minusStatus: minusStatus
+			num: parseFloat(num),
 		})
+		console.log(e)
 	},
 	bindManual1: function (e) {
 		var num1 = e.detail.value;
 		//var minusStatus = num > 0 ? 'normal' : 'disable';		
 		this.setData({
-			num1: num1,
+			num1: parseFloat(num1),
 			//minusStatus: minusStatus
 		})
 	},
@@ -177,7 +219,7 @@ Page({
 		var num2 = e.detail.value;
 		//var minusStatus = num > 0 ? 'normal' : 'disable';		
 		this.setData({
-			num2: num2,
+			num2: parseFloat(num2),
 			//minusStatus: minusStatus
 		})
 	},
@@ -186,10 +228,35 @@ Page({
 		var num3 = e.detail.value;
 		//var minusStatus = num > 0 ? 'normal' : 'disable';		
 		this.setData({
-			num3: num3,
+			num3: parseFloat(num3),
 			//minusStatus: minusStatus
 		})
 	},
+	// 密码输入进入专区
+	bindpws: function (e){
+		
+		var pwass = e.detail.value;
+		this.setData({
+			pwass: e.detail.value,     //通过setData方法将值存进去
+		})
+		console.log(pwass)
+	},
+	btnPws:function(e){
+		var inpws = this.data.inpws;
+		var pwass1 = this.data.pwass;
+		var ifpws = this.data.ifpws;
+		this.setData({
+			inpws: pwass1,
+		})
+		if (inpws == this.data.pws){	
+			this.setData({
+				ifpws: 0,
+			})
+			console.log(ifpws)				
+		}
+	},
+
+	//重置数据
 	btn: function () {
 		var num = this.data.num;
 		wx.showModal({
@@ -336,5 +403,13 @@ Page({
 			})
 		}, 800)
 
+	},
+
+//赞助码
+	showQrcode() {
+		wx.previewImage({
+			urls: ['http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mccNlOvgzA2lM8CfbDSz1PuUCZiu9RQIVNWlPQWBw**E9vDXWdFC0Zhu0L9VLpYOLeH4OZdOnvIno8YNymmdC8TM!/b&bo=DQQNBAAAAAABFzA!&rf=viewer_4'],
+			current: 'http://m.qpic.cn/psc?/V50sID4L2mK4IE0UDNLt093sm117tMDy/45NBuzDIW489QBoVep5mccNlOvgzA2lM8CfbDSz1PuUCZiu9RQIVNWlPQWBw**E9vDXWdFC0Zhu0L9VLpYOLeH4OZdOnvIno8YNymmdC8TM!/b&bo=DQQNBAAAAAABFzA!&rf=viewer_4' // 当前显示图片的http链接      
+		})
 	},
 })
